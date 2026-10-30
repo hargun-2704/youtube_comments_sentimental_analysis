@@ -2,6 +2,8 @@ import os
 import googleapiclient.discovery
 from textblob import TextBlob
 from flask import Flask, request, render_template, jsonify
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import io
 import base64
@@ -120,6 +122,7 @@ def open_browser():
     webbrowser.open_new('http://127.0.0.1:5000/')
 
 if __name__ == '__main__':
+    app.run(debug=False)
     if not is_running_from_reloader():
         threading.Timer(1, open_browser).start()
     app.run(debug=True)
